@@ -1,0 +1,127 @@
+.signup_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.signup_left {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.left_content {
+    width: 490px;
+    color: #256A57;
+    text-align: start;
+}
+
+.signup_header h1 {
+    font-weight: 700;
+    font-size: 41px;
+    line-height: normal;
+}
+
+.signup_form {
+    margin: 2rem 0;
+}
+
+.signup_input_divs {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.signup_input {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup_input label {
+    width: 100%;
+    height: 35px;
+    font-size: 20px;
+}
+
+.signup_input input {
+    height: 40px;
+    padding: 0px 15px;
+    border-radius: 4px;
+    border: 1px solid  #093D41;
+    color: #B6CDC7;
+}
+
+.passOpeneye {
+    position: absolute;
+    top: 330px;
+    left: 780px;
+    width: 20px;
+    height: 20px;
+}
+
+.error{
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    text-align: left;
+    font-size: 12px;
+    margin-bottom: .7rem;
+    margin-top: 2rem;
+    position: absolute;
+}
+
+
+.signup_forgot {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+    color: #256A57;
+    font-weight: 600;
+}
+
+
+.signup_btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.signup_btns button {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 37px;
+    background: #FFF;
+    color: #093D41;
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 4px;
+    border: 1px solid #093D41;
+    cursor: pointer;
+}
+
+.sigup_btns .signin_btn {
+    background: #7CCFA9;
+    color: #FFF;
+    border: none;
+}
+
+.signup_text {
+    font-weight: 600;
+    font-size: 16px;
+}
+.signup_text a {
+    color: #093D41;
+    font-weight: 700;
+}
+
+
+
