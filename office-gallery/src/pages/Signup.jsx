@@ -5,6 +5,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../Firebase';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const INITIAL = {
     email: "",
@@ -148,7 +149,7 @@ const Signup = () => {
                     <div className='signup_btns'>
                         <button className='signin_btn'>Sign Up</button>
                         <button><FcGoogle />  Sign in with Google</button>
-                        <p className='signup_text'>Dont have an account? <a href="/">Sign up</a></p>
+                        <p className='signup_text'>Already have an account? <Link to='/'>Login</Link></p>
                     </div>
                 </form>
             </div>
