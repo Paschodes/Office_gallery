@@ -5,6 +5,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../Firebase';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 const INITIAL = {
@@ -148,7 +149,7 @@ const Login = () => {
                     <div className='login_btns'>
                         <button className='signin_btn'>Login</button>
                         <button><FcGoogle />  Sign in with Google</button>
-                        <p className='login_text'>Dont have an account? <a href="/">Sign up</a></p>
+                        <p className='login_text'>Dont have an account? <Link to='/signup'>Sign up</Link></p>
                     </div>
                 </form>
             </div>
