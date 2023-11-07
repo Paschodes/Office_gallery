@@ -7,9 +7,41 @@ import { useNavigate } from 'react-router';
 import { storage } from '../Firebase';
 import { getDownloadURL, listAll, ref, uploadBytes } from 'firebase/storage';
 import { v4 } from 'uuid'
+import { db } from '../Firebase';
+import { collection, getDocs } from 'firebase/firestore';
+
+
 const Home = () => {
+  //This will keep the list of moments the picture is describing
+  const [momentList, setMomentList] = useState([]);
   const [uploadImage, setUploadImage] = useState(null)
   const navigate = useNavigate();
+
+  //we have to specify which collection we want to get all the documents from before using it in the getdocs by using the collection function
+  const momentCollectionRef = collection(db, "moments");
+  //function to get momentList... and in other for it to be displaying immediately you go into de page, we make use of useEffect
+  useEffect(() => {
+    const getMomentList = async () => {
+      //Read the momentList data (in order to get the datas from our firestore collection we use a fuction called getDocs)
+      try {
+        const data = await getDocs(momentCollectionRef);
+        //to get the specific docs/info individually from the data gotten
+        const filterMomentData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id, //in other to get ids too
+        }));
+        //in other to display it in our page
+        setMomentList(filterMomentData);
+        // console.log(filterMomentData);
+      } catch (err) {
+        console.log(err);
+      }
+      //Set the momentList 
+      
+    };
+    getMomentList();
+  }, [])
+
 
   //in order to keep track of those images
   const [imageList, setImageList] = useState([]);
@@ -23,6 +55,7 @@ const Home = () => {
         navigate('/')
       }).catch(error => console.log(error))
   }
+  
 
   const handleUpload = () => {
     //if there is no image selected, return nd go off the function
@@ -73,12 +106,23 @@ const Home = () => {
         <button onClick={handleUpload}>Upload</button>
       </div>
 
+      <div className='momentlists'>
+        {momentList.map((moments) => {
+          <div>
+            <h1 style={{color: moments.happy ? "green" : "red"}}>Name: {moments.name}</h1>
+            <h1>Date: {moments.date}</h1>
+          </div>
+        })}
+      </div>
+
       <div className='imagelists'>
         {/* map and display the images gotten from firebase storage */}
         {imageList.map((url) => {
           return <img className='homeImg' src={url} alt="image" />
         })}
       </div>
+
+      
     </div>
   )
 }

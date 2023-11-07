@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import './Signup.css'
 import { FcGoogle } from 'react-icons/fc';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../Firebase';
+import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { auth, provider } from '../Firebase';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 
@@ -105,6 +105,17 @@ const Signup = () => {
             });
         })
     }
+    //Sign in with Google
+    const SignInWithGoogle = async () => {
+        try {
+            signInWithPopup(auth, provider)
+        } catch (error) {
+            console.log("Authentication error:", error);
+            setErrorUI({
+                email: [{ message: error.message }],
+            })
+        }
+    }
 
   return (
     <div className='signup_container'>
@@ -148,7 +159,7 @@ const Signup = () => {
 
                     <div className='signup_btns'>
                         <button className='signin_btn'>Sign Up</button>
-                        <button><FcGoogle />  Sign in with Google</button>
+                        <button onClick={SignInWithGoogle}><FcGoogle />  Sign in with Google</button>
                         <p className='signup_text'>Already have an account? <Link to='/'>Login</Link></p>
                     </div>
                 </form>
